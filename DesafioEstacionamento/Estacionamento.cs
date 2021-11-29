@@ -8,33 +8,65 @@ namespace DesafioEstacionamento
 {
     public class Estacionamento
     {
-        private List<Estacionar> _estacionar;
+        private List<Veiculo> _veiculo;
         public string Nome { get; private set; }
         public string Documento { get; private set; }
-        public IReadOnlyList<Estacionar> Estacionar => _estacionar;
+        public IReadOnlyList<Veiculo> Veiculo => _veiculo;
 
         public Estacionamento(string nome, string documento)
         {
             Nome = nome;
             Documento = documento;
-            _estacionar ??= new List<Estacionar>(); 
+            _veiculo ??= new List<Veiculo>(); 
         }
 
-        public void IniciarEstacionamento(Veiculo veiculo, Diaria diaria)
+        public void AcionarVeiculo(string placa, string modelo, string cor, ETipoVeiculo tipoVeiculo, bool diariaAdquirida, bool duchaAdquirida)
         {
-            Estacionar estacionar = new Estacionar(veiculo, diaria);
+            Veiculo veiculo = new Veiculo(placa, modelo, cor, tipoVeiculo);
 
-            if (estacionar is null)
-                throw new Exception("Não foi inciado um estacionamento");
+            if (veiculo is null)
+                throw new Exception("Não foi iniciado um veiculo");
 
-            _estacionar.Add(estacionar);
+            veiculo.IniciarDiaria(new Diaria(DateTime.Now, veiculo,diariaAdquirida,duchaAdquirida));
+
+            _veiculo.Add(veiculo);
+
         }
 
-        public void FinalizarDiaria(DateTime dataHoraFim)
+        public void FinalizarDiaria(string placa)
         {
-            
+            var veiculo = _veiculo.Where(c => c.Placa == placa );
+
+            if(veiculo.Count() == 0)
+                throw new Exception("Veiculo não encontrado");
+
+            foreach (var c in veiculo)                
+            {
+                c.Diaria.AtualizarDiaria(DateTime.Now.AddMinutes(30));
+                //c.Diaria.AtualizarDiaria(DateTime.Now);
+
+            }
+
         }
 
+        public void GerarTicket(string placa)
+        {
+            var veiculo = _veiculo.Where(c => c.Placa == placa);
+
+            if (veiculo.Count() == 0)
+                throw new Exception("Veiculo não encontrado");
+
+            foreach (var c in veiculo)
+            {
+                Console.WriteLine("Resumo diaria:");
+                Console.WriteLine(@"Placa: " + c.Placa + 
+                                  "\nHora de entrada: " + c.Diaria.DataHoraInicio +
+                                  "\nHora de saída: " + c.Diaria.DataHoraFim +
+                                  "\nTotal da diaria: " + c.Diaria.ValorDiaria);
+
+            }
+
+        }
 
     }
 }

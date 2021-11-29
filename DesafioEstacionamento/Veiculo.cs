@@ -29,7 +29,14 @@ namespace DesafioEstacionamento
         public void IniciarDiaria(Diaria diaria)
         {
             Diaria = diaria;
+            
         }
 
+        public void FinalizarDiaria(DateTime horaFim, Veiculo veiculo)
+        {
+            veiculo.Diaria.AtualizarDiaria(horaFim);
+
+
+        }
     }
 }

@@ -23,7 +23,36 @@ namespace DesafioEstacionamento
         public Veiculo Veiculo { get; private set; }
         public bool DiariaAdquirida { get; private set; }
         public bool DuchaAdquirida { get; private set; }
+        public decimal ValorDiaria { get; private set; }
 
+        public void AtualizarDiaria(DateTime horaFim)
+        {
+            DataHoraFim = horaFim;
+
+            TimeSpan ts = DataHoraFim - DataHoraInicio;
+
+            if (Veiculo.TipoVeiculo == ETipoVeiculo.Carro)
+            {
+                if (DiariaAdquirida)
+                    ValorDiaria = (decimal)EValorDiariaCarro.Diaria;
+                else if (DuchaAdquirida)
+                    ValorDiaria = (decimal)EValorDiariaCarro.Ducha;
+                else if (ts.TotalMinutes < 15)
+                    ValorDiaria = (decimal)EValorDiariaCarro.AbaixoQuinzeMinutos;
+                else 
+                    ValorDiaria = (decimal)EValorDiariaCarro.AcimaQuinzeMinutos;
+            }
+            else
+            {
+                if (DiariaAdquirida)
+                    ValorDiaria = (decimal)EValorDiariaMoto.Diaria;
+                else if (ts.TotalMinutes < 15 )
+                    ValorDiaria = (decimal)EValorDiariaMoto.AbaixoQuinzeMinutos;
+                else ValorDiaria = (decimal)EValorDiariaMoto.AcimaQuinzeMinutos;
+                
+            }
+
+        }
 
     }
 }

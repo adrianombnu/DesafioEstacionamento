@@ -11,5 +11,22 @@ namespace DesafioEstacionamento
         Carro = 0,
         Moto = 1
     }
-    
+
+    public enum EValorDiariaCarro
+    {
+        AbaixoQuinzeMinutos = 2,
+        AcimaQuinzeMinutos = 10,
+        Diaria = 50,
+        Ducha = 65
+
+    }
+
+    public enum EValorDiariaMoto
+    {
+        AbaixoQuinzeMinutos = 2,
+        AcimaQuinzeMinutos = 5,
+        Diaria = 25        
+
+    }
+
 }
