@@ -35,36 +35,28 @@ namespace DesafioEstacionamento
 
         public void FinalizarDiaria(string placa)
         {
-            var veiculo = _veiculo.Where(c => c.Placa == placa );
+            var veiculo = _veiculo.SingleOrDefault(c => c.Placa == placa );
 
-            if(veiculo.Count() == 0)
+            if(veiculo is null)
                 throw new Exception("Veiculo não encontrado");
 
-            foreach (var c in veiculo)                
-            {
-                c.Diaria.AtualizarDiaria(DateTime.Now.AddMinutes(30));
-                //c.Diaria.AtualizarDiaria(DateTime.Now);
-
-            }
+            veiculo.Diaria.AtualizarDiaria(DateTime.Now.AddMinutes(30));
+            //c.Diaria.AtualizarDiaria(DateTime.Now);
 
         }
 
         public void GerarTicket(string placa)
         {
-            var veiculo = _veiculo.Where(c => c.Placa == placa);
+            var veiculo = _veiculo.SingleOrDefault(c => c.Placa == placa);
 
-            if (veiculo.Count() == 0)
+            if (veiculo is null)
                 throw new Exception("Veiculo não encontrado");
 
-            foreach (var c in veiculo)
-            {
-                Console.WriteLine("Resumo diaria:");
-                Console.WriteLine(@"Placa: " + c.Placa + 
-                                  "\nHora de entrada: " + c.Diaria.DataHoraInicio +
-                                  "\nHora de saída: " + c.Diaria.DataHoraFim +
-                                  "\nTotal da diaria: " + c.Diaria.ValorDiaria);
-
-            }
+            Console.WriteLine("Resumo diaria:");
+            Console.WriteLine(@"Placa: " + veiculo.Placa + 
+                               "\nHora de entrada: " + veiculo.Diaria.DataHoraInicio +
+                               "\nHora de saída: " + veiculo.Diaria.DataHoraFim +
+                                "\nTotal da diaria: " + veiculo.Diaria.ValorDiaria);
 
         }
 
