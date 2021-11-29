@@ -20,10 +20,8 @@ namespace DesafioEstacionamento
             _veiculo ??= new List<Veiculo>(); 
         }
 
-        public void AcionarVeiculo(string placa, string modelo, string cor, ETipoVeiculo tipoVeiculo, bool diariaAdquirida, bool duchaAdquirida)
+        public void AcionarVeiculo(Veiculo veiculo, bool diariaAdquirida, bool duchaAdquirida)
         {
-            Veiculo veiculo = new Veiculo(placa, modelo, cor, tipoVeiculo);
-
             if (veiculo is null)
                 throw new Exception("Não foi iniciado um veiculo");
 
