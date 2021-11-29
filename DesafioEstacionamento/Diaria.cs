@@ -37,7 +37,7 @@ namespace DesafioEstacionamento
                     ValorDiaria = (decimal)EValorDiariaCarro.Diaria;
                 else if (DuchaAdquirida)
                     ValorDiaria = (decimal)EValorDiariaCarro.Ducha;
-                else if (ts.TotalMinutes < 15)
+                else if (ts.TotalMinutes < (int)ETempoLimite.Limite)
                     ValorDiaria = (decimal)EValorDiariaCarro.AbaixoQuinzeMinutos;
                 else 
                     ValorDiaria = (decimal)EValorDiariaCarro.AcimaQuinzeMinutos;
@@ -46,7 +46,7 @@ namespace DesafioEstacionamento
             {
                 if (DiariaAdquirida)
                     ValorDiaria = (decimal)EValorDiariaMoto.Diaria;
-                else if (ts.TotalMinutes < 15 )
+                else if (ts.TotalMinutes < (int)ETempoLimite.Limite)
                     ValorDiaria = (decimal)EValorDiariaMoto.AbaixoQuinzeMinutos;
                 else ValorDiaria = (decimal)EValorDiariaMoto.AcimaQuinzeMinutos;
                 

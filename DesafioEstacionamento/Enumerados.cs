@@ -29,4 +29,9 @@ namespace DesafioEstacionamento
 
     }
 
+    public enum ETempoLimite
+    {
+        Limite = 15
+    }
+
 }
