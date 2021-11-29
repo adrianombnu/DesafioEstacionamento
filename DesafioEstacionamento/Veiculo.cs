@@ -32,5 +32,13 @@ namespace DesafioEstacionamento
             
         }
 
+        public override string ToString()
+        {
+            return @"Resumo diaria:" + 
+                    "\nPlaca: " + Placa +
+                    "\nHora de entrada: " + Diaria.DataHoraInicio +
+                    "\nHora de saída: " + Diaria.DataHoraFim +
+                    "\nTotal da diaria: " + Diaria.ValorDiaria;
+        }
     }
 }

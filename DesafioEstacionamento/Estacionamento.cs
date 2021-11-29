@@ -50,12 +50,8 @@ namespace DesafioEstacionamento
             if (veiculo is null)
                 throw new Exception("Veiculo não encontrado");
 
-            Console.WriteLine("Resumo diaria:");
-            Console.WriteLine(@"Placa: " + veiculo.Placa + 
-                               "\nHora de entrada: " + veiculo.Diaria.DataHoraInicio +
-                               "\nHora de saída: " + veiculo.Diaria.DataHoraFim +
-                                "\nTotal da diaria: " + veiculo.Diaria.ValorDiaria);
-
+            Console.WriteLine(veiculo.ToString());
+            
         }
 
     }
