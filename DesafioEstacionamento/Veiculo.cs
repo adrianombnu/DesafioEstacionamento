@@ -32,11 +32,5 @@ namespace DesafioEstacionamento
             
         }
 
-        public void FinalizarDiaria(DateTime horaFim, Veiculo veiculo)
-        {
-            veiculo.Diaria.AtualizarDiaria(horaFim);
-
-
-        }
     }
 }
