@@ -13,8 +13,8 @@ namespace DesafioEstacionamento
             estacionamento.AcionarVeiculo(new Veiculo("ASD-2335", "Gol", "Preto", ETipoVeiculo.Carro), false, false);
             estacionamento.AcionarVeiculo(new Veiculo("MEJ-2635", "Twister", "Amarelo", ETipoVeiculo.Moto), false, false);
             estacionamento.AcionarVeiculo(new Veiculo("XYZ-1233", "Biz", "Preto", ETipoVeiculo.Moto), false, false);
-            estacionamento.AcionarVeiculo(new Veiculo("ABC-4897", "BMW", "Branco", ETipoVeiculo.Carro), false, false);
-            estacionamento.AcionarVeiculo(new Veiculo("FGT-9978", "Fusca", "Branco", ETipoVeiculo.Carro), false, false);
+            estacionamento.AcionarVeiculo(new Veiculo("ABC-4897", "BMW", "Branco", ETipoVeiculo.Carro), false, true);
+            estacionamento.AcionarVeiculo(new Veiculo("FGT-9978", "Fusca", "Branco", ETipoVeiculo.Carro), true, false);
 
             estacionamento.FinalizarDiaria("MEJ-2635");
             estacionamento.GerarTicket("MEJ-2635");

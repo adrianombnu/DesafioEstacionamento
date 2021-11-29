@@ -18,6 +18,16 @@ namespace DesafioEstacionamento
             
         }
 
+        const decimal AbaixoQuinzeMinutosCarro = 2;
+        const decimal AcimaQuinzeMinutosCarro = 10;
+        const decimal DiariaCarro = 50;
+        const decimal DuchaCarro = 65;
+
+        const decimal AbaixoQuinzeMinutosMoto = 2;
+        const decimal AcimaQuinzeMinutosMoto = 10;
+        const decimal DiariaMoto = 50;
+        const int TempoLimite = 15;
+
         public DateTime DataHoraInicio { get; private set; }
         public DateTime DataHoraFim { get; private set; }
         public Veiculo Veiculo { get; private set; }
@@ -34,21 +44,21 @@ namespace DesafioEstacionamento
             if (Veiculo.TipoVeiculo == ETipoVeiculo.Carro)
             {
                 if (DiariaAdquirida)
-                    ValorDiaria = (decimal)EValorDiariaCarro.Diaria;
+                    ValorDiaria = DiariaCarro;
                 else if (DuchaAdquirida)
-                    ValorDiaria = (decimal)EValorDiariaCarro.Ducha;
-                else if (ts.TotalMinutes < (int)ETempoLimite.Limite)
-                    ValorDiaria = (decimal)EValorDiariaCarro.AbaixoQuinzeMinutos;
+                    ValorDiaria = DuchaCarro;
+                else if (ts.TotalMinutes < TempoLimite)
+                    ValorDiaria = AbaixoQuinzeMinutosCarro;
                 else 
-                    ValorDiaria = (decimal)EValorDiariaCarro.AcimaQuinzeMinutos;
+                    ValorDiaria = AcimaQuinzeMinutosCarro;
             }
             else
             {
                 if (DiariaAdquirida)
-                    ValorDiaria = (decimal)EValorDiariaMoto.Diaria;
-                else if (ts.TotalMinutes < (int)ETempoLimite.Limite)
-                    ValorDiaria = (decimal)EValorDiariaMoto.AbaixoQuinzeMinutos;
-                else ValorDiaria = (decimal)EValorDiariaMoto.AcimaQuinzeMinutos;
+                    ValorDiaria = DiariaMoto;
+                else if (ts.TotalMinutes < TempoLimite)
+                    ValorDiaria = AbaixoQuinzeMinutosMoto;
+                else ValorDiaria = AcimaQuinzeMinutosMoto;
                 
             }
 

@@ -38,8 +38,8 @@ namespace DesafioEstacionamento
             if(veiculo is null)
                 throw new Exception("Veiculo não encontrado");
 
-            veiculo.Diaria.AtualizarDiaria(DateTime.Now.AddMinutes(30));
-            //c.Diaria.AtualizarDiaria(DateTime.Now);
+            //veiculo.Diaria.AtualizarDiaria(DateTime.Now.AddMinutes(30));
+            veiculo.Diaria.AtualizarDiaria(DateTime.Now);
 
         }
 
